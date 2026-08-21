@@ -1,24 +1,56 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
+import { RevealScreen } from "@/components/invite/RevealScreen";
+import { Particles } from "@/components/invite/Particles";
+import { Hero } from "@/components/invite/Hero";
+import { EventDetails } from "@/components/invite/EventDetails";
+import { FamilySection } from "@/components/invite/FamilySection";
+import { Memories } from "@/components/invite/Memories";
+import { VideoSection } from "@/components/invite/VideoSection";
+import { Schedule } from "@/components/invite/Schedule";
+import { FinalSection } from "@/components/invite/FinalSection";
+import { BrandFooter } from "@/components/invite/BrandFooter";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+const title = "Ganpati Chaturthi 2026 Invitation | FestiveLink";
+const description =
+  "A living digital Ganpati Chaturthi invitation by FestiveLink — diya reveal, family photos, celebration schedule and venue details.";
+
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title },
+      { name: "description", content: description },
+      { property: "og:title", content: title },
+      { property: "og:description", content: description },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
+  const [opened, setOpened] = useState(false);
+
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <main className="relative min-h-screen overflow-x-hidden">
+      {!opened && <RevealScreen onOpen={() => setOpened(true)} />}
+
+      {opened && (
+        <div className="animate-in fade-in duration-700">
+          <Particles />
+          <div className="relative z-20">
+            <Hero />
+            <EventDetails />
+            <FamilySection />
+            <Memories />
+            <VideoSection />
+            <Schedule />
+            <FinalSection />
+            <BrandFooter />
+          </div>
+        </div>
+      )}
+    </main>
   );
 }
