@@ -11,7 +11,7 @@ export function FamilySection() {
       <SectionTitle>Celebrating Bappa Together ❤️</SectionTitle>
 
       <Reveal delay={120} className="mx-auto mt-12 max-w-sm">
-        <figure className="animate-soft-float card-festive rounded-[1.8rem] p-3 pb-6">
+        <figure className="animate-soft-float card-festive relative rounded-[1.8rem] p-3 pb-6">
           <div className="overflow-hidden rounded-[1.4rem] border border-gold/40">
             <img
               src={familyPhoto.src}
