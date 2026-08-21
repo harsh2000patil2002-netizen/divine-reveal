@@ -13,8 +13,9 @@ export function Memories() {
         <Reveal className="sm:col-span-3">
           <figure className="group overflow-hidden rounded-[1.6rem] border border-gold/35 shadow-[var(--shadow-frame)]">
             <img
-              src={feature.src}
-              alt={feature.alt}
+              src={feature?.src}
+              alt={feature?.alt ?? ""}
+
               loading="lazy"
               className="h-72 w-full object-cover transition-transform duration-[1200ms] group-hover:scale-105 sm:h-full"
             />
